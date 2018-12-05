@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  web:
+    image: nginx:1.15.1
+    container_name: nginx
+    stdin_open: true
+    tty: true
+    ports:
+      - "1080:80"

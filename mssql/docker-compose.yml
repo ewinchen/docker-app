@@ -1,0 +1,22 @@
+version: "3.2"
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    restart: always
+    container_name: mssql
+    volumes:
+    - type: volume
+      source: mssql
+      target: /var/opt/mssql
+      volume:
+        nocopy: true
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: superEdwin666
+    ports:
+      - "1433:1433"
+
+volumes:
+  mssql:
+

@@ -1,0 +1,19 @@
+version: "3.2"
+
+services:
+  redis:
+    image: redis:4.0.10
+    restart: always
+    container_name: redis
+    volumes:
+    - type: volume
+      source: redis
+      target: /data
+      volume:
+        nocopy: true
+    ports:
+    - "6379:6379"  
+    entrypoint: ["redis-server", "--requirepass", "redis"]
+
+volumes:
+  redis:
