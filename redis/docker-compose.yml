@@ -13,7 +13,7 @@ services:
         nocopy: true
     ports:
     - "6379:6379"  
-    entrypoint: ["redis-server", "--requirepass", "redis"]
+    entrypoint: ["redis-server", "--requirepass", "redis", "--appendonly", "yes"]
 
 volumes:
   redis:
