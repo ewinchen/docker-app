@@ -20,6 +20,7 @@ services:
       target: /var/opt/mssql
     environment:
       ACCEPT_EULA: Y
+      MSSQL_COLLATION: Chinese_PRC_CI_AS
       MSSQL_SA_PASSWORD: superEdwin666
       TZ: Asia/Shanghai
     ports:
