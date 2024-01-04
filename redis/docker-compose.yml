@@ -4,16 +4,9 @@ services:
     restart: always
     container_name: redis
     volumes:
-    # - type: volume
-    #   source: redis
-    #   target: /data
-    #   volume:
-    #     nocopy: true
     - type: bind
-      # 宿主机 需要 sudo chmod 777 -R
       source: ./data
-      # 容器
       target: /data
     ports:
     - "6379:6379"  
-    entrypoint: ["redis-server", "--requirepass", "redisGekppc20231205", "--save", "60 1", "--loglevel", "warning"]
+    entrypoint: ["redis-server", "--requirepass", "redis666", "--save", "60 1", "--loglevel", "warning"]

@@ -1,20 +1,15 @@
-version: "3.2"
-
 services:
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0.35
     restart: always
+    hostname: mysqldocker
     container_name: mysql
     volumes:
-    - type: volume
-      source: mysql
+    - type: bind
+      source: ./data
       target: /var/lib/mysql
-      volume:
-        nocopy: true
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: mysql666
+      TZ: Asia/Shanghai
     ports:
-      - "3306:3306"  
-
-volumes:
-  mysql:
+      - "3306:3306"

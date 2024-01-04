@@ -1,29 +1,20 @@
-version: "3.2"
-
 services:
   mssql:
-    image: mcr.microsoft.com/mssql/server:2019-CU18-ubuntu-20.04
+    image: mcr.microsoft.com/mssql/server:2022-CU10-ubuntu-22.04
     restart: always
-    hostname: mssqllinux
+    hostname: mssqldocker
     container_name: mssql
     volumes:
-    # - type: volume
-    #   source: mssql
-    #   target: /var/opt/mssql
-    #   volume:
-    #     nocopy: true
-    #     volumes:
+    # 宿主机需要 sudo chmod 777 -R data
     - type: bind
-      # 宿主机 需要 sudo chmod 777 -R
-      source: ./mount
-      # 容器
+      source: ./data
       target: /var/opt/mssql
     environment:
       ACCEPT_EULA: Y
       MSSQL_COLLATION: Chinese_PRC_CI_AS
-      MSSQL_SA_PASSWORD: superEdwin666
+      MSSQL_SA_PASSWORD: mssql.666
+      MSSQL_PID: Developer
+      MSSQL_AGENT_ENABLED: true
       TZ: Asia/Shanghai
     ports:
       - "1433:1433"
-
-
