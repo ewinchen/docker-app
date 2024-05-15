@@ -2,9 +2,14 @@ version: "3"
 
 services:
   web:
-    image: nginx:1.15.1
+    image: nginx:1.25.5
+    restart: always
     container_name: nginx
-    stdin_open: true
-    tty: true
+    volumes:
+    - type: bind
+      source: ./conf.d
+      target: /etc/nginx/conf.d
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
     ports:
-      - "1080:80"
+      - "80:80"
